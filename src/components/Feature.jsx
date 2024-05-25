@@ -12,7 +12,7 @@ const Feature = () => {
       <div
         className="bg-cover bg-center"
         style={{
-          backgroundImage: `url('../../public/bene.jpg')`,
+          backgroundImage: `url('../../public/bene1.jpg')`,
           minHeight: "400px",
         }}
       >

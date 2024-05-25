@@ -3,8 +3,7 @@ import React from "react";
 const Home = () => {
   return (
     <div
-      className="relative h-screen bg-cover bg-center"
-      style={{ backgroundImage: `url('../../public/main1.jpg')` }}
+      className="relative h-screen bg-cover bg-center bg-image"
     >
       <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-50">
         <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">

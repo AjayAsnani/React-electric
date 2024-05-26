@@ -5,10 +5,13 @@ import Feature from "./Feature";
 import Values from "./Values";
 import Testimonial from "./Testimonial";
 import Why from "./Why";
+import Navbar from "./Navbar";
+import Footer from "./Footer";
 
 const Home = () => {
   return (
     <div>
+      <Navbar />
       <div className="relative h-screen bg-cover bg-center bg-main-image">
         <div className="absolute inset-0 flex flex-col items-center justify-center text-center bg-black bg-opacity-50">
           <h1 className="text-white text-4xl md:text-6xl font-bold mb-4">
@@ -29,6 +32,7 @@ const Home = () => {
       <Values />
       <Testimonial />
       <Why />
+      <Footer />
     </div>
   );
 };

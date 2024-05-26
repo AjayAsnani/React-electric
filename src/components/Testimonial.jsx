@@ -26,6 +26,7 @@ const testimonials = [
 
 const Testimonial = () => {
   return (
+    <section id="testimonail">
     <div className="relative py-12 px-4 md:px-8 lg:px-16 mb-14">
       <div className="absolute top-0 left-0 w-full h-1/2 bg-[#012555]"></div>
       <div className="relative max-w-6xl mx-auto">
@@ -61,6 +62,7 @@ const Testimonial = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

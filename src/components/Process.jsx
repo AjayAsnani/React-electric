@@ -6,6 +6,7 @@ import { GiProcessor } from "react-icons/gi";
 
 const Process = () => {
   return (
+    <section id="service">
     <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-16 py-12 relative mt-[-125px]">
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4  text-center ">
         <div className="bg-white  shadow-lg p-6  flex flex-col items-center">
@@ -53,6 +54,7 @@ const Process = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

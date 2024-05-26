@@ -1,31 +1,23 @@
 import React from "react";
 import Navbar from "./components/Navbar";
 import Home from "./components/Home";
-import About from "./components/About";
-import Feature from "./components/Feature";
-import Values from "./components/Values";
-import Testimonial from "./components/Testimonial";
-import Why from "./components/Why";
 import Footer from "./components/Footer";
-import Process from "./components/Process";
 import Login from "./pages/Login";
 import Signup from "./pages/SignUp";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 const App = () => {
   return (
-    <div>
+    <BrowserRouter>
       <Navbar />
-      <Home />
-      <Process />
-      <About />
-      <Feature />
-      <Values />
-      <Testimonial />
-      <Why />
+
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/signup" element={<Signup />} />
+      </Routes>
       <Footer />
-      <Login />
-      <Signup />
-    </div>
+    </BrowserRouter>
   );
 };
 

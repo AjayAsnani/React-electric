@@ -4,7 +4,8 @@ import aboutImage from "../../public/about.jpg"; // Ensure you have an image in 
 
 const About = () => {
   return (
-    <div className="flex flex-col md:flex-row items-center justify-center mb-14 py-12 px-4 md:px-8 lg:px-16 relative">
+    <section id="about">
+    <div  className="flex flex-col md:flex-row items-center justify-center mb-14 py-12 px-4 md:px-8 lg:px-16 relative">
       <div className="w-full md:w-1/2 p-4 md:p-8">
         <h2 className="text-3xl md:text-4xl font-bold mb-4">About Us</h2>
         <p className="text-lg md:text-xl mb-4">
@@ -42,6 +43,7 @@ const About = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

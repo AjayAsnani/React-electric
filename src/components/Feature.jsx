@@ -8,6 +8,7 @@ import { FaRegBell } from "react-icons/fa6";
 
 const Feature = () => {
   return (
+    <section id="feature">
     <div className="relative mb-14">
       <div
         className="bg-cover bg-center bg-feature-image"
@@ -93,6 +94,7 @@ const Feature = () => {
         </div>
       </div>
     </div>
+    </section>
   );
 };
 

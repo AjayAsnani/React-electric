@@ -8,6 +8,8 @@ import Testimonial from "./components/Testimonial";
 import Why from "./components/Why";
 import Footer from "./components/Footer";
 import Process from "./components/Process";
+import Login from "./pages/Login";
+import Signup from "./pages/SignUp";
 
 const App = () => {
   return (
@@ -21,6 +23,8 @@ const App = () => {
       <Testimonial />
       <Why />
       <Footer />
+      <Login />
+      <Signup />
     </div>
   );
 };

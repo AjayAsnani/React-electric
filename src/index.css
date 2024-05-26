@@ -7,9 +7,12 @@
   box-sizing: border-box;
 }
 
-.bg-main-image{
-  background-image: url('/mainbg.jpg');
+.bg-main-image {
+  background-image: url("/mainbg.jpg");
 }
-.bg-feature-image{
-  background-image: url('/banner.jpg');
+.bg-feature-image {
+  background-image: url("/banner.jpg");
+}
+.bg-login-image {
+  background-image: url("/log.webp");
 }

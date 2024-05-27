@@ -9,10 +9,10 @@ const Why = () => {
   return (
     <div>
       <div
-        className="relative flex items-center justify-center p-20 bg-cover bg-center mt-16"
+        className="relative flex items-center justify-center p-6 md:p-20  bg-cover bg-center mt-16"
         style={{ backgroundImage: `url(${whyImage})` }}
       >
-        <div className="bg-white bg-opacity-90 p-8 md:p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center max-w-4xl mx-auto">
+        <div className="bg-white bg-opacity-90 p-4 md:p-8 rounded-lg shadow-lg flex flex-col md:flex-row items-center justify-center max-w-4xl mx-auto">
           <div className="md:w-1/2 p-4">
             <h4 className="text-xl font-bold  text-blue-500">
               A trading of trust
@@ -42,9 +42,9 @@ const Why = () => {
           Global mobility ecosystem driving communities forward
         </h1>
         <div className="flex items-center justify-around mt-8">
-          <BsBuildings className="h-[100px] w-auto" />
-          <VscGraphLine className="h-[100px] w-auto" />
-          <FaCar className="h-[100px] w-auto" />
+          <BsBuildings className="h-[70px] w-auto md:h-[100px]" />
+          <VscGraphLine className="h-[70px] w-auto md:h-[100px]" />
+          <FaCar className="h-[70px] w-auto md:h-[100px]" />
         </div>
       </div>
     </div>

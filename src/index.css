@@ -16,3 +16,6 @@
 .bg-login-image {
   background-image: url("/log.webp");
 }
+.logo-image {
+  background-image: url("/logo.png");
+}

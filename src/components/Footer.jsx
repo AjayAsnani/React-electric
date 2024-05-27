@@ -10,15 +10,15 @@ const Footer = () => {
       <div className="max-w-6xl mx-auto px-4 md:px-8 lg:px-16">
         <div className="flex justify-between space-x-6 mb-8">
           <div className="flex flex-col items-center">
-            <IoCallSharp className="w-12 h-12 text-white transition duration-300" />
+            <IoCallSharp className="w-12 h-12 cursor-pointer text-white transition duration-300" />
             <p className="mt-3">(+58) 123-456-789</p>
           </div>
           <div className="flex flex-col items-center">
-            <MdEmail className="w-12 h-12 text-white transition duration-300" />
+            <MdEmail className="w-12 h-12 cursor-pointer text-white transition duration-300" />
             <p className="mt-3">info@gmail.com</p>
           </div>
           <div className="flex flex-col items-center">
-            <FaLocationDot className="w-12 h-12 text-white transition duration-300" />
+            <FaLocationDot className="w-12 h-12 cursor-pointer text-white transition duration-300" />
             <p className="uppercase mt-3">33195 jaipur, India</p>
           </div>
         </div>
@@ -34,10 +34,10 @@ const Footer = () => {
             </p>
             <div className="flex items-center space-x-4">
               <div className="flex justify-center space-x-6 mb-8">
-                <FaFacebookF className="w-8 h-8 text-gray-300 hover:text-white transition duration-300" />
-                <FaTwitter className="w-8 h-8 text-gray-300 hover:text-white transition duration-300" />
-                <FaInstagram className="w-8 h-8 text-gray-300 hover:text-white transition duration-300" />
-                <FaYoutube className="w-8 h-8 text-gray-300 hover:text-white transition duration-300" />
+                <FaFacebookF className="w-8 h-8 text-gray-300 hover:text-white transition duration-300 cursor-pointer" />
+                <FaTwitter className="w-8 h-8 text-gray-300 hover:text-white transition duration-300 cursor-pointer" />
+                <FaInstagram className="w-8 h-8 text-gray-300 hover:text-white transition duration-300 cursor-pointer" />
+                <FaYoutube className="w-8 h-8 text-gray-300 hover:text-white transition duration-300 cursor-pointer" />
               </div>
             </div>
           </div>
@@ -119,15 +119,15 @@ const Footer = () => {
 
           <div className="md:w-1/4">
             <h3 className="text-xl font-bold mb-4">Get in Touch</h3>
-            <form className="flex mb-2">
+            <form className="flex mb-2 flex-col">
               <input
                 type="email"
                 placeholder="Your Email"
-                className="px-4 py-2 w-[150px] rounded-l-md bg-gray-800 text-gray-300 border-none focus:outline-none "
+                className="px-4 py-2 w-[200px] rounded-l-md bg-gray-800 text-gray-300 border-none focus:outline-none "
               />
               <button
                 type="submit"
-                className="px-4 py-2 bg-blue-500 text-white rounded-r-md hover:bg-[#011c3a] transition duration-300"
+                className="px-4 py-2 w-[200px] bg-blue-500 text-white rounded-r-md hover:bg-[#011c3a] transition duration-300"
               >
                 Subscribe
               </button>

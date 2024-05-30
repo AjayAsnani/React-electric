@@ -2,7 +2,7 @@ import React from "react";
 import { MdDashboard, MdPerson, MdNotifications } from "react-icons/md";
 import Logo from "../../public/logo.png";
 import { VscGraphLine } from "react-icons/vsc";
-import { FaCar, FaRegClock } from "react-icons/fa";
+import { FaCar, FaRegClock, FaPlus } from "react-icons/fa";
 import { PiSeatBold } from "react-icons/pi";
 import { GrMapLocation } from "react-icons/gr";
 
@@ -23,6 +23,10 @@ const Sidebar = () => {
           <li className="flex items-center px-6 py-2 hover:bg-gray-700">
             <MdPerson className="w-6 h-6 mr-2" />
             <a href="#">Profile</a>
+          </li>
+          <li className="flex items-center px-6 py-2 hover:bg-gray-700">
+            <FaPlus className="w-6 h-6 mr-2" />
+            <a href="#">Create Roster</a>
           </li>
           <li className="flex items-center px-6 py-2 hover:bg-gray-700">
             <MdNotifications className="w-6 h-6 mr-2" />

@@ -5,12 +5,14 @@ import {
   IoDocumentTextOutline,
   IoDownloadOutline,
   IoCheckmarkCircleOutline,
+  IoClose,
 } from "react-icons/io5";
 
 const Roster = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
+  const [showTripDetails, setShowTripDetails] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [formData, setFormData] = useState({
     loginTime: "",
@@ -27,6 +29,9 @@ const Roster = () => {
       setIsUploading(false);
       setIsUploaded(true);
     }, 2000);
+    setTimeout(() => {
+      setIsUploaded(false);
+    }, 5000);
   };
 
   const handleReset = () => {
@@ -60,8 +65,14 @@ const Roster = () => {
     setIsUploaded(false);
   };
 
+  const redirectUploadContent = () => {
+    setIsUploaded(false);
+    setShowDetails(false);
+  };
+
+  // Generate unique data for each row
   const tableData = Array.from({ length: 50 }, (_, index) => ({
-    col1: `Row ${index + 1} Data 1`,
+    col1: `P${String(index + 1).padStart(4, "0")}`, // Generates unique values like PA1, PB1, ..., PZ1, PA2, PB2, ...
     col2: `Row ${index + 1} Data 2`,
     col3: `Row ${index + 1} Data 3`,
     col4: `Row ${index + 1} Data 4`,
@@ -71,26 +82,191 @@ const Roster = () => {
     col8: `Row ${index + 1} Data 8`,
   }));
 
+  const headers = [
+    "Employee Id",
+    "Employee Name",
+    "Employee Phone",
+    "Employee Address",
+    "Employee Emergency Contact",
+    "Area",
+    "Shift Type",
+    "Shift Time",
+  ];
+  const tripDetails = [
+    {
+      id: "123",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "124",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "125",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "126",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "127",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "128",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "129",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+    {
+      id: "130",
+      name: "Madadapu Gaiya Geethanjali",
+      phone: "9999999999",
+      address:
+        "H-No-8-3-231/C/203,Near Community hall,Sri Krishna Nagar, yousufguda Hyderabad 500045",
+      emergencyContact: "9999999999",
+      area: "Sri Krishna Nagar",
+      shiftType: "Morning",
+      shiftTime: "10:00 AM - 12:00 PM",
+    },
+  ];
+
   const rowsPerPage = 5;
   const startIndex = currentPage * rowsPerPage;
   const currentPageData = tableData.slice(startIndex, startIndex + rowsPerPage);
 
   return (
-    <div className="flex min-h-screen">
+    <div className="flex min-h-screen relative">
       <Sidebar />
+      {showTripDetails && <div className="absolute top-[20%] left-[5%] bg-white w-[90%] h-auto px-4 py-4 popup-shadow">
+        <div className="flex justify-between items-center">
+          <h1>Trip Details</h1>
+          <IoClose cursor={"pointer"} onClick={() => setShowTripDetails(false)} />
+        </div>
+        <div className="py-4">
+          <input
+            type="text"
+            className="bg-gray-200 text-black w-full p-2 "
+            value="P0001"
+          />
+        </div>
+        <div className="py-4">
+          <table className="min-w-full border-collapse border border-gray-200">
+            <thead>
+              <tr>
+                {headers.map((item, index) => (
+                  <th
+                    key={index}
+                    className="px-4 py-4 text-left border border-gray-300 bg-gray-100 text-[12px ]"
+                  >
+                    {item}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {tripDetails.map((employee) => (
+                <tr key={employee.id}>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.id}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.name}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.phone}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.address}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.emergencyContact}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.area}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.shiftType}
+                  </td>
+                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                    {employee.shiftTime}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>}
+      
       <div className="flex-1 p-8">
-        <h1 className="text-3xl font-bold text-[#012555 mb-8">Create Roster</h1>
+        <h1 className="text-3xl font-bold text-[#012555] mb-8">
+          Create Roster
+        </h1>
         <div className="flex items-center gap-8 mb-6">
-          <div className="flex items-center">
-            <IoDocumentTextOutline className="text-2xl mr-2" />
-            <h2 className="text-xl font-semibold">Upload Employee Details</h2>
-          </div>
-          <div className="flex items-center">
+          <div className="flex items-center cursor-pointer">
             <IoDocumentTextOutline className="text-2xl mr-2" />
             <h2
-              className="text-xl font-semibold pointer"
-              onClick={handleViewDetails}
+              className="text-xl font-semibold"
+              onClick={redirectUploadContent}
             >
+              Upload Employee Details
+            </h2>
+          </div>
+          <div className="flex items-center cursor-pointer">
+            <IoDocumentTextOutline className="text-2xl mr-2" />
+            <h2 className="text-xl font-semibold" onClick={handleViewDetails}>
               View Details
             </h2>
           </div>
@@ -98,15 +274,47 @@ const Roster = () => {
         {showDetails && (
           <div className="bg-white p-8 shadow-md rounded-md mt-8">
             <div className="flex mb-6 gap-4">
-              {Array.from({ length: 5 }).map((_, index) => (
-                <div key={index} className="flex-1">
+                <div  className="flex-1">
                   <input
                     type="text"
                     className="border p-2 w-full"
-                    placeholder={`Textbox ${index + 1}`}
+                    placeholder={`Updated By`}
                   />
                 </div>
-              ))}
+                <div  className="flex-1">
+                  <input
+                    type="text"
+                    className="border p-2 w-full"
+                    placeholder={`Login Time`}
+                  />
+                </div>
+                <div  className="flex-1">
+                  <input
+                    type="text"
+                    className="border p-2 w-full"
+                    placeholder={`Shift`}
+                  />
+                </div>
+                <div  className="flex-1">
+                <select
+                  name="tripType"
+                  onChange={handleChange}
+                  className="border p-2 w-full"
+                >
+                  <option>Trip Type</option>
+                  <option>Pickup</option>
+                  <option>Drop</option>
+                </select>
+                </div>
+                <div  className="flex-1">
+                  <input
+                    type="text"
+                    className="border p-2 w-full"
+                    placeholder={`Date Range`}
+                  />
+                </div>
+                
+              
             </div>
             <div className="flex justify-center gap-4 mb-6">
               <button className="bg-blue-500 text-white px-4 py-2 rounded">
@@ -130,7 +338,11 @@ const Roster = () => {
                 {currentPageData.map((row, rowIndex) => (
                   <tr key={rowIndex}>
                     {Object.values(row).map((cell, cellIndex) => (
-                      <td key={cellIndex} className="border p-2">
+                      <td
+                        key={cellIndex}
+                        className="border p-2 hover:underline cursor-pointer"
+                        onClick={() => setShowTripDetails(true)}
+                      >
                         {cell}
                       </td>
                     ))}
@@ -247,22 +459,13 @@ const Roster = () => {
             </div>
             <div className="flex justify-center gap-4">
               <button
-                className="border border-[#012555] text-[#012555] font-bold bg-white px-4 py-2 rounded-full"
-                style={{ borderRadius: "20%" }}
+                className="border border-[#012555] text-[#012555] font-bold px-4 py-2 rounded"
                 onClick={handleFileUpload}
-                disabled={isUploading}
               >
-                {isUploading ? (
-                  "Uploading..."
-                ) : isUploaded ? (
-                  <IoCheckmarkCircleOutline className="inline text-2xl" />
-                ) : (
-                  "Upload"
-                )}
+                {isUploading ? "Uploading..." : "Upload"}
               </button>
               <button
-                className="bg-white font-bold text-red-500 border border-red-500 px-4 py-2 rounded-full"
-                style={{ borderRadius: "20%" }}
+                className="border border-[#012555] text-[#012555] font-bold px-4 py-2 rounded"
                 onClick={handleReset}
               >
                 Reset
@@ -270,13 +473,10 @@ const Roster = () => {
             </div>
           </div>
         )}
-        {(isUploading || isUploaded) && (
-          <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50">
-            {isUploading ? (
-              <div className="text-white text-2xl">Uploading...</div>
-            ) : (
-              <IoCheckmarkCircleOutline className="text-6xl text-green-500" />
-            )}
+        {isUploaded && (
+          <div className="fixed bottom-4 right-4 bg-green-500 text-white p-4 rounded flex items-center">
+            <IoCheckmarkCircleOutline className="text-2xl mr-2" />
+            <p>File uploaded successfully!</p>
           </div>
         )}
       </div>

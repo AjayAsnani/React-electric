@@ -7,6 +7,7 @@ import Testimonial from "./Testimonial";
 import Why from "./Why";
 import Navbar from "./Navbar";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 const Home = () => {
   return (
@@ -24,6 +25,14 @@ const Home = () => {
           <button className="bg-blue-500 text-white text-lg md:text-xl py-2 px-6 rounded hover:bg-blue-600 transition duration-300">
             Show More
           </button>
+          <div className="mt-10">
+            <Link to={'/dashboard'}>
+            <button className="bg-blue-500 text-white text-lg md:text-xl py-2 px-6 rounded hover:bg-blue-600 transition duration-300">
+            Show Dashboard
+          </button>
+            </Link>
+
+          </div>
         </div>
       </div>
       <Process />

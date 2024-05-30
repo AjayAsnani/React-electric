@@ -19,3 +19,6 @@
 .logo-image {
   background-image: url("/logo.png");
 }
+.popup-shadow{
+  box-shadow: 0px 52px 112px 24px rgba(8, 7, 7, 0.40);
+}

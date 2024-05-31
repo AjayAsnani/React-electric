@@ -6,13 +6,23 @@ import {
   IoDownloadOutline,
   IoCheckmarkCircleOutline,
   IoClose,
+  IoSearch,
 } from "react-icons/io5";
+import { FaMinus } from "react-icons/fa6";
+import { FaFileExcel, FaFileCsv, FaRegFilePdf } from "react-icons/fa";
+import { LuArrowUpDown } from "react-icons/lu";
+import { BiSolidPlusSquare } from "react-icons/bi";
+import { AiFillCloseSquare } from "react-icons/ai";
+import { MdEditSquare } from "react-icons/md";
+import EditRoster from "../components/EditRoster";
+
 
 const Roster = () => {
   const [isUploading, setIsUploading] = useState(false);
   const [isUploaded, setIsUploaded] = useState(false);
   const [showDetails, setShowDetails] = useState(false);
   const [showTripDetails, setShowTripDetails] = useState(false);
+  const [editRoster, setEditRoster] = useState(false);
   const [currentPage, setCurrentPage] = useState(0);
   const [formData, setFormData] = useState({
     loginTime: "",
@@ -82,7 +92,7 @@ const Roster = () => {
     col8: `Row ${index + 1} Data 8`,
   }));
 
-  const headers = [
+  const EmployeeTripHeaders = [
     "Employee Id",
     "Employee Name",
     "Employee Phone",
@@ -92,7 +102,102 @@ const Roster = () => {
     "Shift Type",
     "Shift Time",
   ];
-  const tripDetails = [
+
+  const TripsHeader = [
+    "Trip Id",
+    "Total No. of Employees",
+    "Login Time",
+    "Shift",
+    "Trip Type",
+    "Created Date",
+    "Uploaded By",
+    "Actions",
+  ];
+
+  const TripsDetails = [
+    {
+      id: "P001",
+      employees: "200",
+      loginTime: "06:00am",
+      shift: "Shift-1",
+      tripType: "Pickup",
+      createdDate: "02/06/2024 03:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "D001",
+      employees: "200",
+      loginTime: "08:00am",
+      shift: "Shift-2",
+      tripType: "Drop",
+      createdDate: "04/06/2024 05:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "P002",
+      employees: "300",
+      loginTime: "08:00am",
+      shift: "Shift-2",
+      tripType: "Pickup",
+      createdDate: "02/06/2024 05:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "P003",
+      employees: "250",
+      loginTime: "09:00am",
+      shift: "Shift-3",
+      tripType: "Pickup",
+      createdDate: "02/06/2024 06:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "D002",
+      employees: "100",
+      loginTime: "09:00am",
+      shift: "Shift-2",
+      tripType: "Drop",
+      createdDate: "02/06/2024 06:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "D003",
+      employees: "280",
+      loginTime: "10:00am",
+      shift: "Shift-3",
+      tripType: "Drop",
+      createdDate: "02/06/2024 03:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "P001",
+      employees: "200",
+      loginTime: "06:00am",
+      shift: "Shift-1",
+      tripType: "Pickup",
+      createdDate: "02/06/2024 03:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+    {
+      id: "P001",
+      employees: "200",
+      loginTime: "06:00am",
+      shift: "Shift-1",
+      tripType: "Pickup",
+      createdDate: "02/06/2024 03:00am",
+      uploadedBy: "Madadapu",
+      action: [""],
+    },
+  ];
+
+  const EmployeeTripDetails = [
     {
       id: "123",
       name: "Madadapu Gaiya Geethanjali",
@@ -185,71 +290,80 @@ const Roster = () => {
 
   const rowsPerPage = 5;
   const startIndex = currentPage * rowsPerPage;
-  const currentPageData = tableData.slice(startIndex, startIndex + rowsPerPage);
+  const currentPageData = TripsDetails.slice(
+    startIndex,
+    startIndex + rowsPerPage
+  );
 
   return (
     <div className="flex min-h-screen relative">
       <Sidebar />
-      {showTripDetails && <div className="absolute top-[20%] left-[5%] bg-white w-[90%] h-auto px-4 py-4 popup-shadow">
-        <div className="flex justify-between items-center">
-          <h1>Trip Details</h1>
-          <IoClose cursor={"pointer"} onClick={() => setShowTripDetails(false)} />
-        </div>
-        <div className="py-4">
-          <input
-            type="text"
-            className="bg-gray-200 text-black w-full p-2 "
-            value="P0001"
-          />
-        </div>
-        <div className="py-4">
-          <table className="min-w-full border-collapse border border-gray-200">
-            <thead>
-              <tr>
-                {headers.map((item, index) => (
-                  <th
-                    key={index}
-                    className="px-4 py-4 text-left border border-gray-300 bg-gray-100 text-[12px ]"
-                  >
-                    {item}
-                  </th>
-                ))}
-              </tr>
-            </thead>
-            <tbody>
-              {tripDetails.map((employee) => (
-                <tr key={employee.id}>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.id}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.name}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.phone}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.address}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.emergencyContact}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.area}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.shiftType}
-                  </td>
-                  <td className="px-4 py-4 border border-gray-300 text-[12px]">
-                    {employee.shiftTime}
-                  </td>
+      <EditRoster editRoster={editRoster} />
+      {showTripDetails && (
+        <div className="absolute top-[20%] left-[5%] bg-white w-[90%] h-auto px-4 py-4 popup-shadow">
+          <div className="flex justify-between items-center">
+            <h1>Trip Details</h1>
+            <IoClose
+              cursor={"pointer"}
+              onClick={() => setShowTripDetails(false)}
+            />
+          </div>
+          <div className="py-4">
+            <input
+              type="text"
+              className="bg-gray-200 text-black w-full p-2 "
+              value="P0001"
+            />
+          </div>
+          <div className="py-4">
+            <table className="min-w-full border-collapse border border-gray-200">
+              <thead>
+                <tr>
+                  {EmployeeTripHeaders.map((item, index) => (
+                    <th
+                      key={index}
+                      className="px-4 py-4 text-left border border-gray-300 bg-gray-100 text-[12px ]"
+                    >
+                      {item}
+                    </th>
+                  ))}
                 </tr>
-              ))}
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                {EmployeeTripDetails.map((employee) => (
+                  <tr key={employee.id}>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.id}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.name}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.phone}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.address}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.emergencyContact}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.area}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.shiftType}
+                    </td>
+                    <td className="px-4 py-4 border border-gray-300 text-[12px]">
+                      {employee.shiftTime}
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
         </div>
-      </div>}
-      
+      )}
+
       <div className="flex-1 p-8">
         <h1 className="text-3xl font-bold text-[#012555] mb-8">
           Create Roster
@@ -273,83 +387,127 @@ const Roster = () => {
         </div>
         {showDetails && (
           <div className="bg-white p-8 shadow-md rounded-md mt-8">
-            <div className="flex mb-6 gap-4">
-                <div  className="flex-1">
+            <div className="flex-col border border-gray-300">
+              <div className="flex justify-between items-center p-4 w-full h-[50px] border border-gray-300 border-t-0 border-l-0 border-r-0">
+                <h1>Search</h1>
+                <FaMinus />
+              </div>
+              <div className="flex mb-6 gap-4 py-8 px-4">
+                <div className="flex-1">
                   <input
                     type="text"
                     className="border p-2 w-full"
                     placeholder={`Updated By`}
                   />
                 </div>
-                <div  className="flex-1">
+                <div className="flex-1">
                   <input
                     type="text"
                     className="border p-2 w-full"
                     placeholder={`Login Time`}
                   />
                 </div>
-                <div  className="flex-1">
+                <div className="flex-1">
                   <input
                     type="text"
                     className="border p-2 w-full"
                     placeholder={`Shift`}
                   />
                 </div>
-                <div  className="flex-1">
-                <select
-                  name="tripType"
-                  onChange={handleChange}
-                  className="border p-2 w-full"
-                >
-                  <option>Trip Type</option>
-                  <option>Pickup</option>
-                  <option>Drop</option>
-                </select>
+                <div className="flex-1">
+                  <select
+                    name="tripType"
+                    onChange={handleChange}
+                    className="border p-2 w-full"
+                  >
+                    <option>Trip Type</option>
+                    <option>Pickup</option>
+                    <option>Drop</option>
+                  </select>
                 </div>
-                <div  className="flex-1">
+                <div className="flex-1">
                   <input
                     type="text"
                     className="border p-2 w-full"
                     placeholder={`Date Range`}
                   />
                 </div>
-                
-              
+              </div>
+              <div className="flex justify-center gap-4 mb-6">
+                <button className="bg-blue-500 text-white px-4 py-2 rounded">
+                  Search
+                </button>
+                <button className="bg-gray-500 text-white px-4 py-2 rounded">
+                  Cancel
+                </button>
+              </div>
             </div>
-            <div className="flex justify-center gap-4 mb-6">
-              <button className="bg-blue-500 text-white px-4 py-2 rounded">
-                Search
-              </button>
-              <button className="bg-gray-500 text-white px-4 py-2 rounded">
-                Cancel
-              </button>
-            </div>
-            <table className="w-full border-collapse">
-              <thead>
-                <tr>
-                  {Array.from({ length: 8 }).map((_, index) => (
-                    <th key={index} className="border p-2 text-left">
-                      Column {index + 1}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {currentPageData.map((row, rowIndex) => (
-                  <tr key={rowIndex}>
-                    {Object.values(row).map((cell, cellIndex) => (
-                      <td
-                        key={cellIndex}
-                        className="border p-2 hover:underline cursor-pointer"
-                        onClick={() => setShowTripDetails(true)}
-                      >
-                        {cell}
-                      </td>
+
+            <div className="py-4">
+              <div className=" flex float-right py-2">
+                {!editRoster && <div className="flex-1 relative">
+                  <div className="absolute top-3 px-2">
+                    <IoSearch />
+                  </div>
+                  <input
+                    type="text"
+                    className="border py-2 px-8 w-full"
+                    placeholder={`Search`}
+                  />
+                </div>}
+                <div className="flex gap-4 items-center px-2">
+                  <div className="p-2 border border-black rounded-full cursor-pointer">
+                    <FaFileExcel />
+                  </div>
+                  <div className="p-2 border border-black rounded-full cursor-pointer">
+                    <FaFileCsv />
+                  </div>
+                  <div className="p-2 border border-black rounded-full cursor-pointer">
+                    <FaRegFilePdf />
+                  </div>
+                </div>
+              </div>
+              <table className="w-full border-collapse">
+                <thead>
+                  <tr>
+                    {TripsHeader.map((trip, index) => (
+                      <th key={index} className="border p-2 text-left">
+                        <div className="flex gap-2 items-center">
+                          <p>{trip}</p>
+                          <div className="flex items-center">
+                            <LuArrowUpDown className="cursor-pointer" />
+                          </div>
+                        </div>
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
+                </thead>
+                <tbody>
+                  {currentPageData.map((trips, index) => (
+                    <tr key={index}>
+                      {Object.values(trips).map((cell, cellIndex) => (
+                        <td
+                          key={cellIndex}
+                          className={`border px-2 py-12  cursor-pointer ${cellIndex===0 ? 'hover:underline' : 'hover:none'}`}
+                          onClick={() => cellIndex===0 ? setShowTripDetails(true) : setShowTripDetails(false)}
+                        >
+                          {cellIndex === 7 ? (
+                            <div className="flex items-center gap-2">
+                              {" "}
+                              <AiFillCloseSquare className="text-[40px]" />
+                              <BiSolidPlusSquare className="text-[40px]" />
+                              <MdEditSquare onClick={() => setEditRoster(true)} className="text-[40px]" />
+                            </div>
+                          ) : (
+                            cell
+                          )}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
             <div className="gap-5 flex items-center justify-center mt-4">
               <button
                 className="bg-gray-500 text-white px-4 py-2 rounded"
